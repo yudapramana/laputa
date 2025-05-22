@@ -11,7 +11,7 @@
     <link rel="icon" href="https://getbootstrap.com/docs/3.3/favicon.ico">
     <link rel="canonical" href="https://getbootstrap.com/docs/3.3/examples/jumbotron-narrow/">
 
-    <title>Pemilihan Tilok SKTTMB Area Kab. Pesisir Selatan</title>
+    <title>Pengumpulan Data Pembuatan Rekening CPPPK Tahun 2025</title>
 
     <!-- Bootstrap core CSS -->
     <link href="https://getbootstrap.com/docs/3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -92,7 +92,7 @@
                                     <span class="text-danger">{{ $errors->first('nik') }}</span>
                                 @endif
                             </div>
-                            <input type="submit" class="btn btn-primary" value="Cari Data Peserta">
+                            <input type="submit" class="btn btn-primary" value="Cari Data CPPPK">
                         </form>
                         @if (isset($sudah_isi))
                             <table class="table">

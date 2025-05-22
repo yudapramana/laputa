@@ -11,7 +11,7 @@
     <link rel="icon" href="https://getbootstrap.com/docs/3.3/favicon.ico">
     <link rel="canonical" href="https://getbootstrap.com/docs/3.3/examples/jumbotron-narrow/">
 
-    <title>Pemilihan Tilok SKTTMB Area Kab. Pesisir Selatan</title>
+    <title>Pengumpulan Data Pembuatan Rekening CPPPK Tahun 2025</title>
 
     <!-- Bootstrap core CSS -->
     <link href="https://getbootstrap.com/docs/3.3/dist/css/bootstrap.min.css" rel="stylesheet">
