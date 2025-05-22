@@ -32,7 +32,7 @@ class InputController extends Controller
         if ($peserta) {
             if ($peserta->email && $peserta->nomor_hp && $peserta->nama_ibu_kandung) {
                 $errors = [
-                    'nik' => 'Peserta dengan nomor ' . $request->nik . ' telah mengisi tilok',
+                    'nik' => 'Calon PPPK dengan NIK ' . $request->nik . ' telah mengisi data',
                     'sudah_isi' => true,
                     'peserta' => $peserta
                 ];
