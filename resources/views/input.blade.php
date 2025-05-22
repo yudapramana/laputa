@@ -87,12 +87,14 @@
                             {{ csrf_field() }}
                             <div class="form-group">
                                 <label for="nik">Masukkan Nomor Induk Kependudukan (NIK) Anda</label>
-                                <input class="form-control" type="text" name="nik" placeholder="NIK Calon PPPK">
+                                <input class="form-control" type="text" name="nik" placeholder="NIK Calon PPPK" required>
                                 @if ($errors->has('nik'))
                                     <span class="text-danger">{{ $errors->first('nik') }}</span>
                                 @endif
                             </div>
-                            <input type="submit" class="btn btn-primary" value="Cari Data CPPPK">
+                            <button type="submit" id="submitBtn" class="btn btn-primary">
+                                Cari Data CPPPK
+                            </button>
                         </form>
                         @if (isset($sudah_isi))
                             <table class="table">
@@ -183,6 +185,44 @@
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="https://getbootstrap.com/docs/3.3/assets/js/ie10-viewport-bug-workaround.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('form').on('submit', function() {
+                $('#submitBtn').prop('disabled', true).html('<span class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span> Loading...');
+            });
+        });
+    </script>
+
+    <style>
+        /* Gaya animasi untuk ikon loading */
+        .glyphicon-refresh-animate {
+            -animation: spin 1s infinite linear;
+            -webkit-animation: spin 1s infinite linear;
+        }
+
+        @-webkit-keyframes spin {
+            from {
+                -webkit-transform: rotate(0deg);
+            }
+
+            to {
+                -webkit-transform: rotate(360deg);
+            }
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+
 </body>
 
 </html>
