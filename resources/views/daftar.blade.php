@@ -39,7 +39,7 @@
             var allowed = false;
             var password = prompt("Masukkan password untuk mengakses halaman:");
 
-            if (password === "pesisirterdepan") {
+            if (password === "pesselterdepan") {
                 allowed = true;
                 $(".container").show(); // Menampilkan konten jika benar
             } else {
