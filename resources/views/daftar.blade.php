@@ -109,8 +109,9 @@
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>NIK</th>
+                            <th>Satuan Kerja</th>
                             <th>Nama</th>
+                            <th>NIK</th>
                             <th>Nomor HP</th>
                             <th>Email</th>
                             <th>Nama Ibu Kandung</th>
@@ -121,8 +122,9 @@
                         @foreach ($peserta as $key => $item)
                             <tr>
                                 <th scope="row">{{ $key + 1 }}</th>
-                                <th>{{ $item->nik }}</th>
-                                <td>{{ $item->nama }}</td>
+                                <th>{{ $item->satuan_kerja }}</th>
+                                <th>{{ $item->nama }}</th>
+                                <td>{{ $item->nik }}</td>
                                 <td>{{ $item->nomor_hp }}</td>
                                 <td>{{ $item->email }}</td>
                                 <td>{{ $item->nama_ibu_kandung }}</td>
