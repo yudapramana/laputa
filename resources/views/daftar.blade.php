@@ -127,7 +127,7 @@
                                 <td>{{ $item->nik }}</td>
                                 <td>{{ $item->nomor_hp }}</td>
                                 <td>{{ $item->email }}</td>
-                                <td>{{ $item->nama_ibu_kandung }}</td>
+                                <td>{{ Str::upper($item->nama_ibu_kandung) }}</td>
                             </tr>
                         @endforeach
 
