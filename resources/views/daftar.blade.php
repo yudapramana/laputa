@@ -54,7 +54,7 @@
 
         <div class="jumbotron" style="padding-top:10px!important; padding-bottom:10px!important">
             <h1>SUBBAGIANTU</h1>
-            <p class="lead">Daftar Data Pembuatan Rekening CPPPK Tahun 2025</p>
+            <p class="lead">Daftar Data Input Aplikasi Keuangan - Penggajian</p>
         </div>
 
         <nav class="navbar navbar-default">
