@@ -16,6 +16,7 @@ use Illuminate\Http\Request;
 */
 
 Route::get('/', function () {
+    session(['password_validated' => false]);
     return view('input');
 });
 
@@ -27,5 +28,6 @@ Route::get('/daftar', function () {
 });
 
 
-Route::post('/get/peserta', [\App\Http\Controllers\InputController::class, 'store'])->name('input.store');
-Route::post('/inputtilok', [\App\Http\Controllers\InputController::class, 'storeTilok'])->name('inputtilok.store');
+Route::get('/get/peserta/{nip}', [\App\Http\Controllers\InputController::class, 'store'])->name('input.store');
+Route::post('/tilok/store', [\App\Http\Controllers\InputController::class, 'storeTilok'])->name('tilok.store');
+Route::post('/verify-password', [\App\Http\Controllers\InputController::class, 'verifyPassword'])->name('peserta.verify_password');
