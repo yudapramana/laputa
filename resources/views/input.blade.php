@@ -251,21 +251,19 @@
                                                 <strong>Catatan Penting:</strong><br>
                                                 Penginputan dokumen softcopy dilakukan melalui Google Drive sesuai petunjuk berikut:
                                                 <ul>
-                                                    <li>Folder Google Drive <strong>menggunakan NIP</strong> masing-masing P3K sebagai nama folder.</li>
-                                                    <li>Dokumen di dalam folder diberi nama sesuai format berikut:</li>
-                                                    <ol>
-                                                        <li><code>SKPPPK_NIP</code></li>
-                                                        <li><code>SPMT_NIP</code></li>
-                                                        <li><code>KTPYBS_NIP</code></li>
-                                                        <li><code>NPWP_NIP</code></li>
-                                                        <li><code>KK_NIP</code></li>
-                                                        <li><code>BUKUNKH_NIP</code></li>
-                                                        <li><code>KTPPSGN_NIP</code></li>
-                                                        <li><code>AKANAK1_NIP</code></li>
-                                                        <li><code>AKANAK2_NIP</code></li>
-                                                        <li><code>Dst...</code></li>
-                                                    </ol>
-                                                    <li>Pastikan akses folder disetel ke <strong>"Siapa saja yang memiliki link dapat melihat"</strong></li>
+                                                    <li>Gunakan akun Google Drive <strong>pribadi</strong> masing-masing (bukan akun orang lain).</li>
+                                                    <li>Buat Folder Google Drive <strong>menggunakan format: Nama Satker_NIP</strong> (contoh: <code>KUA IV JURAI_199005232025211010</code>).</li>
+                                                    <li>Upload dokumen ke dalam folder. Dokumen <strong>harus dalam format PDF</strong> dan diberi nama sesuai dengan format pada contoh gambar di bawah ini:</li>
+                                                    <div class="text-center">
+                                                        {{-- style="max-width: 900px; height: auto;" --}}
+                                                        <img src="http://res.cloudinary.com/dezj1x6xp/image/upload/v1748776685/PandanViewMandeh/CONTOH_UPLOAD_dueghm.png" class="img-responsive" alt="Contoh Format Upload Dokumen">
+                                                    </div>
+                                                    <li>Pastikan akses folder disetel ke <strong>"Siapa saja yang memiliki link dapat melihat"</strong>.</li>
+                                                    <li>Berikut adalah cara membagikan folder di Google Drive agar dapat diakses publik:</li>
+                                                    <div class="text-center">
+                                                        <img src="http://res.cloudinary.com/dezj1x6xp/image/upload/v1748776994/PandanViewMandeh/bagikan_icg1fo.png" class="img-responsive" alt="Cara Membagikan Folder Google Drive">
+                                                        <img src="http://res.cloudinary.com/dezj1x6xp/image/upload/v1748777734/PandanViewMandeh/bagikan_2_u6lkna.png" style="max-width: 300px; height: auto;" class="img-responsive" alt="Cara Membagikan Folder Google Drive">
+                                                    </div>
                                                 </ul>
                                             </div>
                                         @endif

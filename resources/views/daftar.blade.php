@@ -36,6 +36,13 @@
         }
     </style>
 
+    <style>
+        table.table-smaller {
+            font-size: 10px !important;
+            width: 100% !important;
+        }
+    </style>
+
 </head>
 
 <body>
@@ -58,7 +65,7 @@
         </div>
 
         <nav class="navbar navbar-default">
-            <div class="container-fluid">
+            <div class="container">
 
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
@@ -89,76 +96,85 @@
                         Daftar Data</h3>
                 </div>
                 <div class="table-responsive">
-                    <table class="table table-bordered table-condensed table-striped table-hove" style="font-size: small!important;">
+                    <table class="table table-bordered table-condensed table-striped table-hover table-smaller">
+
                         <thead>
                             <tr>
-                                <th>No</th>
-                                <th>Satuan Kerja</th>
+                                <th rowspan="2">No</th>
+                                <th rowspan="2">Satuan Kerja</th>
+                                <th rowspan="2">Nama</th>
+                                <th rowspan="2">NIP</th>
+                                <th rowspan="2">NIK</th>
+                                <th rowspan="2">Jenis Kelamin</th>
+                                <th rowspan="2">Tempat Lahir</th>
+                                <th rowspan="2">Tanggal Lahir</th>
+                                <th rowspan="2">Agama</th>
+                                <th rowspan="2">Nama Ibu Kandung</th>
+                                <th rowspan="2">GDrive Link</th>
+                                <th rowspan="2">Nomor HP</th>
+                                <th rowspan="2">Email</th>
+                                <th rowspan="2">Alamat</th>
+                                <th rowspan="2">Kode Pos</th>
+                                <th rowspan="2">Jabatan</th>
+                                <th rowspan="2">Pendidikan</th>
+                                <th rowspan="2">Nomor NPWP</th>
+                                <th rowspan="2">Nomor KK</th>
+                                <th rowspan="2">Status Pernikahan</th>
+                                <th colspan="10" class="text-center">Data Pasangan</th>
+                                <th rowspan="2">Punya Anak</th>
+                                <th colspan="8" class="text-center">Anak 1</th>
+                                <th colspan="8" class="text-center">Anak 2</th>
+                                <th colspan="8" class="text-center">Anak 3</th>
+                                <th colspan="8" class="text-center">Anak 4</th>
+                            </tr>
+                            <tr>
+                                <!-- Sub-header Pasangan -->
                                 <th>Nama</th>
                                 <th>NIP</th>
-                                <th>NIK</th>
-                                <th>Jenis Kelamin</th>
                                 <th>Tempat Lahir</th>
                                 <th>Tanggal Lahir</th>
-                                <th>Agama</th>
-                                <th>Nama Ibu Kandung</th>
-                                <th>GDrive Link</th>
-                                <th>Nomor HP</th>
-                                <th>Email</th>
-                                <th>Alamat</th>
-                                <th>Kode Pos</th>
-                                <th>Jabatan</th>
-                                <th>Pendidikan</th>
-                                <th>Nomor NPWP</th>
-                                <th>Nomor KK</th>
-                                <th>Status Pernikahan</th>
-                                <th>Pasangan Nama</th>
-                                <th>Pasangan NIP</th>
-                                <th>Pasangan Tempat Lahir</th>
-                                <th>Pasangan Tanggal Lahir</th>
-                                <th>Pasangan Tanggal Nikah</th>
-                                <th>Pasangan NIK</th>
-                                <th>Pasangan Pekerjaan</th>
-                                <th>Pasangan Nama Ibu</th>
-                                <th>Pasangan Nama Ayah</th>
-                                <th>Pasangan Tertanggung</th>
-                                <th>Punya Anak</th>
-                                <!-- Anak 1 -->
-                                <th>Nama Anak 1</th>
-                                <th>Tempat Lahir Anak 1</th>
-                                <th>Tanggal Lahir Anak 1</th>
-                                <th>NIK Anak 1</th>
-                                <th>Pekerjaan Anak 1</th>
-                                <th>Nama Ayah Anak 1</th>
-                                <th>Nama Ibu Anak 1</th>
-                                <th>Tertanggung Anak 1</th>
-                                <!-- Anak 2 -->
-                                <th>Nama Anak 2</th>
-                                <th>Tempat Lahir Anak 2</th>
-                                <th>Tanggal Lahir Anak 2</th>
-                                <th>NIK Anak 2</th>
-                                <th>Pekerjaan Anak 2</th>
-                                <th>Nama Ayah Anak 2</th>
-                                <th>Nama Ibu Anak 2</th>
-                                <th>Tertanggung Anak 2</th>
-                                <!-- Anak 3 -->
-                                <th>Nama Anak 3</th>
-                                <th>Tempat Lahir Anak 3</th>
-                                <th>Tanggal Lahir Anak 3</th>
-                                <th>NIK Anak 3</th>
-                                <th>Pekerjaan Anak 3</th>
-                                <th>Nama Ayah Anak 3</th>
-                                <th>Nama Ibu Anak 3</th>
-                                <th>Tertanggung Anak 3</th>
-                                <!-- Anak 4 -->
-                                <th>Nama Anak 4</th>
-                                <th>Tempat Lahir Anak 4</th>
-                                <th>Tanggal Lahir Anak 4</th>
-                                <th>NIK Anak 4</th>
-                                <th>Pekerjaan Anak 4</th>
-                                <th>Nama Ayah Anak 4</th>
-                                <th>Nama Ibu Anak 4</th>
-                                <th>Tertanggung Anak 4</th>
+                                <th>Tanggal Nikah</th>
+                                <th>NIK</th>
+                                <th>Pekerjaan</th>
+                                <th>Nama Ibu</th>
+                                <th>Nama Ayah</th>
+                                <th>Tertanggung</th>
+                                <!-- Sub-header Anak 1 -->
+                                <th>Nama</th>
+                                <th>Tempat Lahir</th>
+                                <th>Tanggal Lahir</th>
+                                <th>NIK</th>
+                                <th>Pekerjaan</th>
+                                <th>Nama Ayah</th>
+                                <th>Nama Ibu</th>
+                                <th>Tertanggung</th>
+                                <!-- Sub-header Anak 2 -->
+                                <th>Nama</th>
+                                <th>Tempat Lahir</th>
+                                <th>Tanggal Lahir</th>
+                                <th>NIK</th>
+                                <th>Pekerjaan</th>
+                                <th>Nama Ayah</th>
+                                <th>Nama Ibu</th>
+                                <th>Tertanggung</th>
+                                <!-- Sub-header Anak 3 -->
+                                <th>Nama</th>
+                                <th>Tempat Lahir</th>
+                                <th>Tanggal Lahir</th>
+                                <th>NIK</th>
+                                <th>Pekerjaan</th>
+                                <th>Nama Ayah</th>
+                                <th>Nama Ibu</th>
+                                <th>Tertanggung</th>
+                                <!-- Sub-header Anak 4 -->
+                                <th>Nama</th>
+                                <th>Tempat Lahir</th>
+                                <th>Tanggal Lahir</th>
+                                <th>NIK</th>
+                                <th>Pekerjaan</th>
+                                <th>Nama Ayah</th>
+                                <th>Nama Ibu</th>
+                                <th>Tertanggung</th>
                             </tr>
                         </thead>
                         <tbody>
