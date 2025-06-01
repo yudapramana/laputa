@@ -227,7 +227,7 @@ class InputController extends Controller
 
                         // Validasi bersyarat hanya jika status_pernikahan adalah "Menikah"
                         'pasangan_nama'             => 'required_if:status_pernikahan,Menikah|nullable|string|max:255',
-                        'pasangan_nip'              => 'required_if:status_pernikahan,Menikah|nullable|digits:18',
+                        'pasangan_nip'              => 'sometimes|nullable|digits:18',
                         'pasangan_tempat_lahir'     => 'required_if:status_pernikahan,Menikah|nullable|string|max:100',
                         'pasangan_tanggal_lahir'    => 'required_if:status_pernikahan,Menikah|nullable|date',
                         'pasangan_tanggal_nikah'    => 'required_if:status_pernikahan,Menikah|nullable|date',
@@ -266,7 +266,7 @@ class InputController extends Controller
                         'pasangan_pekerjaan' => $request->pasangan_pekerjaan,
                         'pasangan_nama_ibu' => $request->pasangan_nama_ibu,
                         'pasangan_nama_ayah' => $request->pasangan_nama_ayah,
-                        'pasangan_tertanggung' => $request->has('pasangan_tertanggung'),
+                        'pasangan_tertanggung' => $request->pasangan_tertanggung,
                     ];
                     break;
 
@@ -282,7 +282,7 @@ class InputController extends Controller
                         $data["pekerjaan_anak_$i"] = $request->input("pekerjaan_anak_$i", null);
                         $data["nama_ayah_anak_$i"] = $request->input("nama_ayah_anak_$i", null);
                         $data["nama_ibu_anak_$i"] = $request->input("nama_ibu_anak_$i", null);
-                        $data["tertanggung_anak_$i"] = $request->has("tertanggung_anak_$i") ? 1 : 0;
+                        $data["tertanggung_anak_$i"] = $request->input("tertanggung_anak_$i", null);
                     }
 
                     // dd($request->all());

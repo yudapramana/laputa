@@ -448,7 +448,9 @@
                                         <div id="pasangan_fields_section" style="display: none;">
                                             @foreach ($pasangan_fields as $field)
                                                 <div class="form-group">
-                                                    <label for="{{ $field }}">{{ ucwords(str_replace('_', ' ', $field)) }}</label>
+                                                    <label for="{{ $field }}">{{ ucwords(str_replace('_', ' ', $field)) }} @if ($field == 'pasangan_nip')
+                                                            (Opsional)
+                                                        @endif </label>
                                                     <input class="form-control @error($field) is-invalid @enderror" type="{{ str_contains($field, 'tanggal') ? 'date' : 'text' }}" name="{{ $field }}" value="{{ old($field, $peserta->$field) }}">
                                                     @error($field)
                                                         <div class="text-danger">{{ $message }}</div>
@@ -456,11 +458,12 @@
                                                 </div>
                                             @endforeach
 
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox" name="pasangan_tertanggung" value="1" {{ old('pasangan_tertanggung', $peserta->pasangan_tertanggung) ? 'checked' : '' }}>
-                                                    Pasangan ditanggung oleh Instansi
-                                                </label>
+                                            <div class="form-group">
+                                                <label for="pasangan_tertanggung">Pasangan Ditanggung oleh yang Bersangkutan</label>
+                                                <select class="form-control" name="pasangan_tertanggung" id="pasangan_tertanggung">
+                                                    <option value="1" {{ old('pasangan_tertanggung', $peserta->pasangan_tertanggung) == 1 ? 'selected' : '' }}>Ya</option>
+                                                    <option value="0" {{ old('pasangan_tertanggung', $peserta->pasangan_tertanggung) == 0 ? 'selected' : '' }}>Tidak</option>
+                                                </select>
                                             </div>
                                         </div>
 
@@ -565,13 +568,15 @@
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-6">
-                                                                    <div class="checkbox" style="margin-top: 25px;">
-                                                                        <label>
-                                                                            <input type="checkbox" name="tertanggung_anak_{{ $i }}" value="1" {{ old('tertanggung_anak_' . $i, $peserta->{'tertanggung_anak_' . $i}) ? 'checked' : '' }}>
-                                                                            Anak Tertanggung
-                                                                        </label>
+                                                                    <div class="form-group">
+                                                                        <label for="tertanggung_anak_{{ $i }}">Anak Ditanggung oleh yang Bersangkutan</label>
+                                                                        <select class="form-control input-sm" name="tertanggung_anak_{{ $i }}" id="tertanggung_anak_{{ $i }}">
+                                                                            <option value="1" {{ old('tertanggung_anak_' . $i, $peserta->{'tertanggung_anak_' . $i}) == 1 ? 'selected' : '' }}>Ya</option>
+                                                                            <option value="0" {{ old('tertanggung_anak_' . $i, $peserta->{'tertanggung_anak_' . $i}) == 0 ? 'selected' : '' }}>Tidak</option>
+                                                                        </select>
                                                                     </div>
                                                                 </div>
+
                                                                 <div class="col-md-12 text-right">
                                                                     <button type="button" class="btn btn-sm btn-danger hapus-anak-btn" data-index="{{ $i - 1 }}">
                                                                         Hapus Anak
@@ -759,6 +764,63 @@
                         digits: true,
                         minlength: 16,
                         maxlength: 16
+                    },
+
+                    // Validasi tambahan untuk pasangan
+                    status_pernikahan: {
+                        required: true
+                    },
+                    pasangan_nama: {
+                        required: function() {
+                            return $('#status_pernikahan').val() === 'Menikah';
+                        }
+                    },
+                    pasangan_nip: {
+                        minlength: 8,
+                        maxlength: 18
+                    },
+                    pasangan_tempat_lahir: {
+                        required: function() {
+                            return $('#status_pernikahan').val() === 'Menikah';
+                        }
+                    },
+                    pasangan_tanggal_lahir: {
+                        required: function() {
+                            return $('#status_pernikahan').val() === 'Menikah';
+                        },
+                        date: true
+                    },
+                    pasangan_tanggal_nikah: {
+                        required: function() {
+                            return $('#status_pernikahan').val() === 'Menikah';
+                        },
+                        date: true
+                    },
+                    pasangan_nik: {
+                        required: function() {
+                            return $('#status_pernikahan').val() === 'Menikah';
+                        },
+                        digits: true,
+                        minlength: 16,
+                        maxlength: 16
+                    },
+                    pasangan_pekerjaan: {
+                        required: function() {
+                            return $('#status_pernikahan').val() === 'Menikah';
+                        }
+                    },
+                    pasangan_nama_ibu: {
+                        required: function() {
+                            return $('#status_pernikahan').val() === 'Menikah';
+                        }
+                    },
+                    pasangan_nama_ayah: {
+                        required: function() {
+                            return $('#status_pernikahan').val() === 'Menikah';
+                        }
+                    },
+                    pasangan_tertanggung: {
+                        required: true
                     }
                 },
                 messages: {
@@ -795,7 +857,41 @@
                         minlength: "Minimal 15 karakter",
                         maxlength: "Maksimal 20 karakter"
                     },
-                    // tambahkan pesan lain sesuai kebutuhan
+                    status_pernikahan: {
+                        required: "Status pernikahan wajib dipilih"
+                    },
+                    pasangan_nama: {
+                        required: "Nama pasangan wajib diisi jika menikah"
+                    },
+                    pasangan_tempat_lahir: {
+                        required: "Tempat lahir pasangan wajib diisi jika menikah"
+                    },
+                    pasangan_tanggal_lahir: {
+                        required: "Tanggal lahir pasangan wajib diisi jika menikah",
+                        date: "Format tanggal tidak valid"
+                    },
+                    pasangan_tanggal_nikah: {
+                        required: "Tanggal nikah wajib diisi jika menikah",
+                        date: "Format tanggal tidak valid"
+                    },
+                    pasangan_nik: {
+                        required: "NIK wajib diisi jika menikah",
+                        digits: "Harus berupa angka",
+                        minlength: "NIK harus 16 digit",
+                        maxlength: "NIK harus 16 digit"
+                    },
+                    pasangan_pekerjaan: {
+                        required: "Pekerjaan pasangan wajib diisi jika menikah"
+                    },
+                    pasangan_nama_ibu: {
+                        required: "Nama ibu pasangan wajib diisi jika menikah"
+                    },
+                    pasangan_nama_ayah: {
+                        required: "Nama ayah pasangan wajib diisi jika menikah"
+                    },
+                    pasangan_tertanggung: {
+                        required: "Harap pilih apakah pasangan ditanggung"
+                    }
                 },
                 errorElement: 'div',
                 errorClass: 'text-danger',
@@ -806,6 +902,7 @@
                     $(element).removeClass('is-invalid');
                 }
             });
+
         });
     </script>
 
