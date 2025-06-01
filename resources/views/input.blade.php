@@ -252,7 +252,7 @@
                                                 Penginputan dokumen softcopy dilakukan melalui Google Drive sesuai petunjuk berikut:
                                                 <ul>
                                                     <li>Gunakan akun Google Drive <strong>pribadi</strong> masing-masing (bukan akun orang lain).</li>
-                                                    <li>Buat Folder Google Drive <strong>menggunakan format: Nama Satker_NIP</strong> (contoh: <code>KUA IV JURAI_199005232025211010</code>).</li>
+                                                    <li>Buat Folder Google Drive <strong>menggunakan format: Nama Satker_NIP_NAMA</strong> (contoh: <code>KUA IV JURAI_199005232025211010_Nanda Esa Putra</code>).</li>
                                                     <li>Upload dokumen ke dalam folder. Dokumen <strong>harus dalam format PDF</strong> dan diberi nama sesuai dengan format pada contoh gambar di bawah ini:</li>
                                                     <div class="text-center">
                                                         {{-- style="max-width: 900px; height: auto;" --}}
