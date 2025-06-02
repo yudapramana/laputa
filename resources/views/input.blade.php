@@ -257,9 +257,9 @@
                                                 <strong>Catatan Penting:</strong><br>
                                                 Penginputan dokumen softcopy dilakukan melalui <b style="color: brown">Google Form (Link Google Form akan dishare nanti setelah SPMT diterbitkan)</b>. Siapkan Saja File didalam perangkat HP maupun Laptop Pribadi sesuai petunjuk dibawah ini:
                                                 <ul>
-                                                    {{-- <li>Gunakan akun Google Drive <strong>pribadi</strong> masing-masing (bukan akun orang lain).</li>
-                                                    <li>Buat Folder Google Drive <strong>menggunakan format: Nama Satker_NIP_NAMA</strong> (contoh: <code>KUA IV JURAI_199005232025211010_Nanda Esa Putra</code>).</li>
-                                                    <li>Upload dokumen ke dalam folder. Dokumen <strong>harus dalam format PDF</strong> dan diberi nama sesuai dengan format pada contoh gambar di bawah ini:</li> --}}
+                                                    {{-- <li>Gunakan akun Google Drive <strong>pribadi</strong> masing-masing (bukan akun orang lain).</li> --}}
+                                                    <li>Buat Folder Di Perangkat Laptop/HP <strong>menggunakan format: Nama Satker_NIP_NAMA</strong> (contoh: <code>KUA IV JURAI_199005232025211010_Nanda Esa Putra</code>).</li>
+                                                    <li>Masukkan dokumen ke dalam folder. Dokumen <strong>harus dalam format PDF</strong> dan diberi nama sesuai dengan format pada contoh gambar di bawah ini (NIP disesuaikan dengan NIP Pribadi):</li>
                                                     <div class="text-center">
                                                         <img src="http://res.cloudinary.com/dezj1x6xp/image/upload/v1748776685/PandanViewMandeh/CONTOH_UPLOAD_dueghm.png" class="img-responsive" alt="Contoh Format Upload Dokumen">
                                                     </div>
