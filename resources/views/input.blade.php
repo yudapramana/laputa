@@ -178,7 +178,7 @@
                                             @if (!$peserta->password)
                                                 [1] Pengisian Password Akun
                                             @else
-                                                [1] Pengumpulan Dokumen via Link Google Drive
+                                                [1] Pengumpulan Dokumen
                                             @endif
                                         </a>
                                     </h4>
@@ -244,32 +244,31 @@
                                                 }
                                             </script>
                                         @else
-                                            <div class="form-group">
+                                            {{-- <div class="form-group">
                                                 <label for="gdrive_link">Input Link Dokumen Google Drive</label>
                                                 <input type="url" name="gdrive_link" id="gdrive_link" class="form-control" placeholder="Masukkan link folder Google Drive" value="{{ $peserta->gdrive_link }}">
                                                 @error('gdrive_link')
                                                     <div class="text-danger">{{ $message }}</div>
                                                 @enderror
                                                 <p class="help-block text-danger">*Pastikan folder dapat diakses publik atau melalui link</p>
-                                            </div>
+                                            </div> --}}
 
                                             <div class="alert alert-info">
                                                 <strong>Catatan Penting:</strong><br>
-                                                Penginputan dokumen softcopy dilakukan melalui Google Drive sesuai petunjuk berikut:
+                                                Penginputan dokumen softcopy dilakukan melalui <b style="color: brown">Google Form (Link Google Form akan dishare nanti setelah SPMT diterbitkan)</b>. Siapkan Saja File didalam perangkat HP maupun Laptop Pribadi sesuai petunjuk dibawah ini:
                                                 <ul>
-                                                    <li>Gunakan akun Google Drive <strong>pribadi</strong> masing-masing (bukan akun orang lain).</li>
+                                                    {{-- <li>Gunakan akun Google Drive <strong>pribadi</strong> masing-masing (bukan akun orang lain).</li>
                                                     <li>Buat Folder Google Drive <strong>menggunakan format: Nama Satker_NIP_NAMA</strong> (contoh: <code>KUA IV JURAI_199005232025211010_Nanda Esa Putra</code>).</li>
-                                                    <li>Upload dokumen ke dalam folder. Dokumen <strong>harus dalam format PDF</strong> dan diberi nama sesuai dengan format pada contoh gambar di bawah ini:</li>
+                                                    <li>Upload dokumen ke dalam folder. Dokumen <strong>harus dalam format PDF</strong> dan diberi nama sesuai dengan format pada contoh gambar di bawah ini:</li> --}}
                                                     <div class="text-center">
-                                                        {{-- style="max-width: 900px; height: auto;" --}}
                                                         <img src="http://res.cloudinary.com/dezj1x6xp/image/upload/v1748776685/PandanViewMandeh/CONTOH_UPLOAD_dueghm.png" class="img-responsive" alt="Contoh Format Upload Dokumen">
                                                     </div>
-                                                    <li>Pastikan akses folder disetel ke <strong>"Siapa saja yang memiliki link dapat melihat"</strong>.</li>
+                                                    {{-- <li>Pastikan akses folder disetel ke <strong>"Siapa saja yang memiliki link dapat melihat"</strong>.</li>
                                                     <li>Berikut adalah cara membagikan folder di Google Drive agar dapat diakses publik:</li>
                                                     <div class="text-center">
                                                         <img src="http://res.cloudinary.com/dezj1x6xp/image/upload/v1748776994/PandanViewMandeh/bagikan_icg1fo.png" class="img-responsive" alt="Cara Membagikan Folder Google Drive">
                                                         <img src="http://res.cloudinary.com/dezj1x6xp/image/upload/v1748777734/PandanViewMandeh/bagikan_2_u6lkna.png" style="max-width: 300px; height: auto;" class="img-responsive" alt="Cara Membagikan Folder Google Drive">
-                                                    </div>
+                                                    </div> --}}
                                                 </ul>
                                             </div>
                                         @endif
@@ -312,13 +311,13 @@
                                             @enderror
                                         </div>
 
-                                        <div class="form-group">
+                                        {{-- <div class="form-group">
                                             <label for="nama_ibu_kandung">Nama Ibu Kandung</label>
                                             <input class="form-control @error('nama_ibu_kandung') is-invalid @enderror" type="text" name="nama_ibu_kandung" value="{{ old('nama_ibu_kandung', $peserta->nama_ibu_kandung) }}" required>
                                             @error('nama_ibu_kandung')
                                                 <div class="text-danger">{{ $message }}</div>
                                             @enderror
-                                        </div>
+                                        </div> --}}
 
                                         <div class="form-group">
                                             <label for="nik">NIK</label>
@@ -806,7 +805,7 @@
                         required: true,
                         email: true
                     },
-                    nama_ibu_kandung: "required",
+                    // nama_ibu_kandung: "required",
                     nik: {
                         required: true,
                         digits: true,

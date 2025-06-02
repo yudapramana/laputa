@@ -116,7 +116,7 @@ class InputController extends Controller
                         'tempat_lahir' => 'required|string|max:100',
                         'tanggal_lahir' => 'required|date',
                         'agama' => 'required|in:Islam,Kristen,Katolik,Hindu,Buddha,Khonghucu,Lainnya',
-                        'nama_ibu_kandung' => 'required|string|max:255',
+                        // 'nama_ibu_kandung' => 'required|string|max:255',
 
                         // --- Kontak ---
                         'nomor_hp' => 'required|digits_between:10,15',
