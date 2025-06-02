@@ -23,6 +23,7 @@ Route::get('/', function () {
 Route::get('/daftar', function () {
     $peserta = DB::table('employees')
     ->selectRaw('*')
+    ->orderBy('satuan_kerja', 'ASC')
     ->get();
     return view('daftar', compact('peserta'));
 });
