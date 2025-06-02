@@ -220,10 +220,10 @@ class InputController extends Controller
                     break;
 
                 case 'Spouse':
-                    // dd($request->all());
 
                     $validatedData = $request->validate([
                         'status_pernikahan' => 'required|in:Belum Menikah,Menikah,Cerai Hidup,Cerai Mati',
+                        'status_pasangan' => 'required|in:Suami,Istri',
 
                         // Validasi bersyarat hanya jika status_pernikahan adalah "Menikah"
                         'pasangan_nama'             => 'required_if:status_pernikahan,Menikah|nullable|string|max:255',
@@ -257,7 +257,9 @@ class InputController extends Controller
 
                     $data = [
                         'status_pernikahan' => $request->status_pernikahan,
+                        'status_pasangan' => $request->status_pasangan,
                         'pasangan_nama' => $request->pasangan_nama,
+                        'apakah_pasangan_asn' => $request->apakah_pasangan_asn,
                         'pasangan_nip' => $request->pasangan_nip,
                         'pasangan_tempat_lahir' => $request->pasangan_tempat_lahir,
                         'pasangan_tanggal_lahir' => $request->pasangan_tanggal_lahir,
@@ -268,24 +270,41 @@ class InputController extends Controller
                         'pasangan_nama_ayah' => $request->pasangan_nama_ayah,
                         'pasangan_tertanggung' => $request->pasangan_tertanggung,
                     ];
+
+                    // dd($data);
+
                     break;
 
                 case 'Child':
 
-                    $data['punya_anak'] = $request->punya_anak;
+                    if(isset($request->punya_anak)) {
+                        $data['punya_anak'] = $request->punya_anak;
 
-                    for ($i = 1; $i <= 4; $i++) {
-                        $data["nama_anak_$i"] = $request->input("nama_anak_$i", null);
-                        $data["tempat_lahir_anak_$i"] = $request->input("tempat_lahir_anak_$i", null);
-                        $data["tanggal_lahir_anak_$i"] = $request->input("tanggal_lahir_anak_$i", null);
-                        $data["nik_anak_$i"] = $request->input("nik_anak_$i", null);
-                        $data["pekerjaan_anak_$i"] = $request->input("pekerjaan_anak_$i", null);
-                        $data["nama_ayah_anak_$i"] = $request->input("nama_ayah_anak_$i", null);
-                        $data["nama_ibu_anak_$i"] = $request->input("nama_ibu_anak_$i", null);
-                        $data["tertanggung_anak_$i"] = $request->input("tertanggung_anak_$i", null);
+                        for ($i = 1; $i <= 4; $i++) {
+                            $data["nama_anak_$i"] = $request->input("nama_anak_$i", null);
+                            $data["tempat_lahir_anak_$i"] = $request->input("tempat_lahir_anak_$i", null);
+                            $data["tanggal_lahir_anak_$i"] = $request->input("tanggal_lahir_anak_$i", null);
+                            $data["nik_anak_$i"] = $request->input("nik_anak_$i", null);
+                            $data["pekerjaan_anak_$i"] = $request->input("pekerjaan_anak_$i", null);
+                            $data["nama_ayah_anak_$i"] = $request->input("nama_ayah_anak_$i", null);
+                            $data["nama_ibu_anak_$i"] = $request->input("nama_ibu_anak_$i", null);
+                            $data["tertanggung_anak_$i"] = $request->input("tertanggung_anak_$i", null);
+                        }
+                    } else {
+                        $data['punya_anak'] = false;
+
+                        for ($i = 1; $i <= 4; $i++) {
+                            $data["nama_anak_$i"] = null;
+                            $data["tempat_lahir_anak_$i"] = null;
+                            $data["tanggal_lahir_anak_$i"] = null;
+                            $data["nik_anak_$i"] = null;
+                            $data["pekerjaan_anak_$i"] = "Belum Sekolah";
+                            $data["nama_ayah_anak_$i"] = null;
+                            $data["nama_ibu_anak_$i"] = null;
+                            $data["tertanggung_anak_$i"] = null;
+                        }
                     }
 
-                    // dd($request->all());
                     // return $data;
                     break;
                 
@@ -294,12 +313,16 @@ class InputController extends Controller
                     break;
             }
 
-            // return $data;
+
+            // dd($request->all());
+
 
             // return $data;
             DB::table('employees')
             ->where('id', $request->id)
             ->update($data);
+
+
 
             $peserta = DB::table('employees')
                 ->select('*')
@@ -317,11 +340,13 @@ class InputController extends Controller
             // Return validation errors to the form
             return redirect()->back()
                 ->withErrors($e->validator)
+                ->with('open_panel', $submitAction)
                 ->withInput();
         } catch (\Exception $e) {
             // Handle general error
             return redirect()->back()
                 ->withErrors(['error' => 'Terjadi kesalahan saat menyimpan data: ' . $e->getMessage()])
+                ->with('open_panel', $submitAction)
                 ->withInput();
         }
     }

@@ -46,13 +46,15 @@ class CreateExamlocationsTable extends Migration
 
             // --- Data Keluarga (Pasangan) ---
             $table->enum('status_pernikahan', ['Belum Menikah', 'Menikah', 'Cerai Hidup', 'Cerai Mati'])->default('Belum Menikah');
+            $table->enum('status_pasangan', ['Suami', 'Istri'])->default('Suami');
             $table->string('pasangan_nama')->nullable();
+            $table->boolean('apakah_pasangan_asn')->default(false);
             $table->string('pasangan_nip')->nullable();
             $table->string('pasangan_tempat_lahir')->nullable();
             $table->date('pasangan_tanggal_lahir')->nullable();
             $table->date('pasangan_tanggal_nikah')->nullable();
             $table->string('pasangan_nik')->nullable();
-            $table->string('pasangan_pekerjaan')->nullable();
+            $table->enum('pasangan_pekerjaan', ['Ibu Rumah Tangga', 'Bekerja', 'Tidak Bekerja'])->default('Tidak Bekerja');
             $table->string('pasangan_nama_ibu')->nullable();
             $table->string('pasangan_nama_ayah')->nullable();
             $table->boolean('pasangan_tertanggung')->default(false);
@@ -64,7 +66,7 @@ class CreateExamlocationsTable extends Migration
             $table->string('tempat_lahir_anak_1')->nullable();
             $table->date('tanggal_lahir_anak_1')->nullable();
             $table->string('nik_anak_1')->nullable();
-            $table->enum('pekerjaan_anak_1', ['Sekolah', 'Kuliah', 'Belum Bekerja', 'Bekerja'])->default('Sekolah');
+            $table->enum('pekerjaan_anak_1', ['Belum Sekolah', 'Sekolah', 'Kuliah'])->default('Sekolah');
             $table->string('nama_ayah_anak_1')->nullable();
             $table->string('nama_ibu_anak_1')->nullable();
             $table->string('tertanggung_anak_1')->nullable();
@@ -73,7 +75,7 @@ class CreateExamlocationsTable extends Migration
             $table->string('tempat_lahir_anak_2')->nullable();
             $table->date('tanggal_lahir_anak_2')->nullable();
             $table->string('nik_anak_2')->nullable();
-            $table->enum('pekerjaan_anak_2', ['Sekolah', 'Kuliah', 'Belum Bekerja', 'Bekerja'])->default('Sekolah');
+            $table->enum('pekerjaan_anak_2', ['Belum Sekolah', 'Sekolah', 'Kuliah'])->default('Sekolah');
             $table->string('nama_ayah_anak_2')->nullable();
             $table->string('nama_ibu_anak_2')->nullable();
             $table->string('tertanggung_anak_2')->nullable();
@@ -82,7 +84,7 @@ class CreateExamlocationsTable extends Migration
             $table->string('tempat_lahir_anak_3')->nullable();
             $table->date('tanggal_lahir_anak_3')->nullable();
             $table->string('nik_anak_3')->nullable();
-            $table->enum('pekerjaan_anak_3', ['Sekolah', 'Kuliah', 'Belum Bekerja', 'Bekerja'])->default('Sekolah');
+            $table->enum('pekerjaan_anak_3', ['Belum Sekolah', 'Sekolah', 'Kuliah'])->default('Sekolah');
             $table->string('nama_ayah_anak_3')->nullable();
             $table->string('nama_ibu_anak_3')->nullable();
             $table->string('tertanggung_anak_3')->nullable();
@@ -91,7 +93,7 @@ class CreateExamlocationsTable extends Migration
             $table->string('tempat_lahir_anak_4')->nullable();
             $table->date('tanggal_lahir_anak_4')->nullable();
             $table->string('nik_anak_4')->nullable();
-            $table->enum('pekerjaan_anak_4', ['Sekolah', 'Kuliah', 'Belum Bekerja', 'Bekerja'])->default('Sekolah');
+            $table->enum('pekerjaan_anak_4', ['Belum Sekolah', 'Sekolah', 'Kuliah'])->default('Sekolah');
             $table->string('nama_ayah_anak_4')->nullable();
             $table->string('nama_ibu_anak_4')->nullable();
             $table->string('tertanggung_anak_4')->nullable();

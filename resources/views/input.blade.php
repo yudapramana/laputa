@@ -64,6 +64,12 @@
                     </div>
                 @endif
 
+                @if (session()->has('error'))
+                    <div class="alert alert-danger">
+                        {{ session()->get('error') }}
+                    </div>
+                @endif
+
                 @if (!isset($peserta))
                     <div class="well">
 
@@ -442,19 +448,87 @@
                                             @enderror
                                         </div>
 
+
+
                                         {{-- Container untuk data pasangan --}}
                                         <div id="pasangan_fields_section" style="display: none;">
+
+                                            <div class="form-group">
+                                                <label for="status_pasangan">Status Pasangan</label>
+                                                <select class="form-control @error('status_pasangan') is-invalid @enderror" name="status_pasangan" id="status_pasangan" required>
+                                                    @foreach (['' => 'Silahkan Pilih', 'Suami' => 'Suami', 'Istri' => 'Istri'] as $value => $label)
+                                                        <option value="{{ $value }}" {{ old('status_pasangan', $peserta->status_pasangan) == $value ? 'selected' : '' }}>{{ $label }}</option>
+                                                    @endforeach
+                                                </select>
+                                                @error('status_pasangan')
+                                                    <div class="text-danger">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+
+
                                             @foreach ($pasangan_fields as $field)
                                                 <div class="form-group">
-                                                    <label for="{{ $field }}">{{ ucwords(str_replace('_', ' ', $field)) }} @if ($field == 'pasangan_nip')
-                                                            (Opsional)
-                                                        @endif </label>
-                                                    <input class="form-control @error($field) is-invalid @enderror" type="{{ str_contains($field, 'tanggal') ? 'date' : 'text' }}" name="{{ $field }}" value="{{ old($field, $peserta->$field) }}">
+                                                    @if ($field != 'pasangan_nip')
+                                                        <label for="{{ $field }}">{{ ucwords(str_replace('_', ' ', $field)) }}
+
+                                                        </label>
+                                                    @endif
+
+
+                                                    @if ($field == 'pasangan_pekerjaan')
+                                                        <select class="form-control input-sm" name="pasangan_pekerjaan">
+                                                            @php
+                                                                $pekerjaan_options = ['Ibu Rumah Tangga', 'Bekerja', 'Tidak Bekerja'];
+                                                                $pekerjaan_value = old($field, $peserta->$field);
+                                                            @endphp
+                                                            @foreach ($pekerjaan_options as $option)
+                                                                <option value="{{ $option }}" {{ $pekerjaan_value === $option ? 'selected' : '' }}>{{ $option }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    @elseif ($field == 'pasangan_nip')
+                                                        @php
+                                                            $isPasanganASN = old('apakah_pasangan_asn', $peserta->apakah_pasangan_asn) ? true : false;
+                                                        @endphp
+
+                                                        <div class="form-check mb-2">
+                                                            <input type="hidden" name="apakah_pasangan_asn" value="0"> {{-- default unchecked --}}
+                                                            <input type="checkbox" class="form-check-input" name="apakah_pasangan_asn" id="apakah_pasangan_asn" value="1" {{ $isPasanganASN ? 'checked' : '' }}>
+                                                            <label class="form-check-label" for="apakah_pasangan_asn">Centang jika pasangan ASN</label>
+                                                        </div>
+
+                                                        <div id="pasangan_nip_field" style="display: {{ $isPasanganASN ? 'block' : 'none' }};">
+                                                            <label for="{{ $field }}">{{ ucwords(str_replace('_', ' ', $field)) }}
+                                                            </label>
+                                                            <input class="form-control @error($field) is-invalid @enderror" type="text" name="{{ $field }}" value="{{ old($field, $peserta->$field) }}">
+                                                            @error($field)
+                                                                <div class="text-danger">{{ $message }}</div>
+                                                            @enderror
+                                                        </div>
+                                                    @else
+                                                        <input class="form-control @error($field) is-invalid @enderror" type="{{ str_contains($field, 'tanggal') ? 'date' : 'text' }}" name="{{ $field }}" value="{{ old($field, $peserta->$field) }}">
+                                                    @endif
                                                     @error($field)
                                                         <div class="text-danger">{{ $message }}</div>
                                                     @enderror
                                                 </div>
                                             @endforeach
+
+                                            <script>
+                                                document.addEventListener('DOMContentLoaded', function() {
+                                                    const checkbox = document.getElementById('apakah_pasangan_asn');
+                                                    const nipField = document.getElementById('pasangan_nip_field');
+                                                    const nipInput = nipField.querySelector('input');
+
+                                                    checkbox.addEventListener('change', function() {
+                                                        if (this.checked) {
+                                                            nipField.style.display = 'block';
+                                                        } else {
+                                                            nipField.style.display = 'none';
+                                                            nipInput.value = ''; // kosongkan input ketika unchecked
+                                                        }
+                                                    });
+                                                });
+                                            </script>
 
                                             <div class="form-group">
                                                 <label for="pasangan_tertanggung">Pasangan Ditanggung oleh yang Bersangkutan</label>
@@ -544,7 +618,7 @@
                                                                         <label for="pekerjaan_anak_{{ $i }}">Pekerjaan/Sekolah</label>
                                                                         <select class="form-control input-sm" name="pekerjaan_anak_{{ $i }}">
                                                                             @php
-                                                                                $pekerjaan_options = ['Sekolah', 'Kuliah', 'Belum Bekerja', 'Bekerja'];
+                                                                                $pekerjaan_options = ['Belum Sekolah', 'Sekolah', 'Kuliah'];
                                                                                 $pekerjaan_value = old('pekerjaan_anak_' . $i, $peserta->{'pekerjaan_anak_' . $i});
                                                                             @endphp
                                                                             @foreach ($pekerjaan_options as $option)
@@ -591,15 +665,14 @@
                                             <button type="button" class="btn btn-sm btn-outline-secondary mb-3 mt-3 pt-5" id="tambah_anak_btn">
                                                 + Tambah Anak
                                             </button>
-
-
-                                            <hr>
-
-                                            <button type="submit" class="btn btn-primary pull-right" id="submitBtnChild" data-param="Child">
-                                                <span id="submitTextChild">Simpan Data</span>
-                                                <span id="submitSpinnerChild" class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
-                                            </button>
                                         </div>
+
+                                        <hr>
+
+                                        <button type="submit" class="btn btn-primary pull-right" id="submitBtnChild" data-param="Child">
+                                            <span id="submitTextChild">Simpan Data</span>
+                                            <span id="submitSpinnerChild" class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+                                        </button>
 
                                         <script>
                                             function toggleAnakSection() {
