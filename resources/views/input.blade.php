@@ -292,7 +292,7 @@
                                 <div class="panel-heading">
                                     <h4 class="panel-title">
                                         <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
-                                            [2] Pengisian Data Tambahan</a>
+                                            [2] Pengisian Data Utama</a>
                                     </h4>
                                 </div>
                                 <div id="collapse2" class="panel-collapse collapse {{ session('open_panel') == 'Addition' ? 'in' : '' }}">
