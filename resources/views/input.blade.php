@@ -80,17 +80,18 @@
                             Data</h3>
 
                         <div class="form-group">
-                            <label for="nip">Masukkan Nomor Induk Pegawai (NIP) Anda</label>
-                            <input class="form-control" type="text" id="nip" name="nip" placeholder="NIP PPPK" required value="{{ $errors->first('data') }}">
+                            <label for="nip" style="display:none">Masukkan Nomor Induk Pegawai (NIP) Anda</label>
+                            <input style="display:none" class="form-control" type="text" id="nip" name="nip" placeholder="NIP PPPK" required value="{{ $errors->first('data') }}">
                             @if ($errors->has('nip'))
                                 <span class="text-danger">{{ $errors->first('nip') }}</span>
                             @endif
                         </div>
 
-                        <a class="btn btn-primary" href="#" id="cariDataLink">
+                        <a class="btn btn-primary" href="#" id="cariDataLink" style="display:none">
                             <span id="btnText">Cari Data PPPK Formasi 2024</span>
                             <span id="loadingSpinner" class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
                         </a>
+                        <h3>Pengisian Data telah Ditutup. Terima Kasih telah melakukan Pengisian.</h3>
                     </div>
 
                     <script>

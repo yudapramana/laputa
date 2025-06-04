@@ -123,6 +123,7 @@
                                 <th rowspan="2">Nomor NPWP</th>
                                 <th rowspan="2">Nomor KK</th>
                                 <th rowspan="2">Status Pernikahan</th>
+                                <th rowspan="2">Status Pasangan</th>
                                 <th colspan="10" class="text-center">Data Pasangan</th>
                                 <th rowspan="2">Punya Anak</th>
                                 <th colspan="8" class="text-center">Anak 1</th>
@@ -209,6 +210,7 @@
                                     <td>{{ $item->nomor_npwp ?? '-' }}</td>
                                     <td>{{ $item->nomor_kk ?? '-' }}</td>
                                     <td>{{ $item->status_pernikahan }}</td>
+                                    <td>{{ $item->status_pernikahan == 'Menikah' ? $item->status_pasangan : '-' }}</td>
                                     <td>{{ $item->pasangan_nama ?? '-' }}</td>
                                     <td>{{ $item->pasangan_nip ?? '-' }}</td>
                                     <td>{{ $item->pasangan_tempat_lahir ?? '-' }}</td>
@@ -221,41 +223,41 @@
                                     <td>{{ $item->pasangan_tertanggung ? 'Ya' : 'Tidak' }}</td>
                                     <td>{{ $item->punya_anak ? 'Ya' : 'Tidak' }}</td>
                                     <!-- Anak 1 -->
-                                    <td>{{ $item->nama_anak_1 ?? '-' }}</td>
+                                    <td style="background-color:cornflowerblue">{{ $item->nama_anak_1 ?? '-' }}</td>
                                     <td>{{ $item->tempat_lahir_anak_1 ?? '-' }}</td>
                                     <td>{{ $item->tanggal_lahir_anak_1 ? \Carbon\Carbon::parse($item->tanggal_lahir_anak_1)->format('d-m-Y') : '-' }}</td>
                                     <td>{{ $item->nik_anak_1 ?? '-' }}</td>
-                                    <td>{{ $item->pekerjaan_anak_1 ?? '-' }}</td>
+                                    <td>{{ $item->nama_anak_1 != '' ? $item->pekerjaan_anak_1 : '-' }}</td>
                                     <td>{{ $item->nama_ayah_anak_1 ?? '-' }}</td>
                                     <td>{{ $item->nama_ibu_anak_1 ?? '-' }}</td>
-                                    <td>{{ $item->tertanggung_anak_1 ?? '-' }}</td>
+                                    <td>{{ $item->nama_anak_1 != '' ? ($item->tertanggung_anak_1 ? 'Ya' : 'Tidak') : '-' }}</td>
                                     <!-- Anak 2 -->
-                                    <td>{{ $item->nama_anak_2 ?? '-' }}</td>
+                                    <td style="background-color:cornflowerblue">{{ $item->nama_anak_2 ?? '-' }}</td>
                                     <td>{{ $item->tempat_lahir_anak_2 ?? '-' }}</td>
                                     <td>{{ $item->tanggal_lahir_anak_2 ? \Carbon\Carbon::parse($item->tanggal_lahir_anak_2)->format('d-m-Y') : '-' }}</td>
                                     <td>{{ $item->nik_anak_2 ?? '-' }}</td>
-                                    <td>{{ $item->pekerjaan_anak_2 ?? '-' }}</td>
+                                    <td>{{ $item->nama_anak_2 != '' ? $item->pekerjaan_anak_2 : '-' }}</td>
                                     <td>{{ $item->nama_ayah_anak_2 ?? '-' }}</td>
                                     <td>{{ $item->nama_ibu_anak_2 ?? '-' }}</td>
-                                    <td>{{ $item->tertanggung_anak_2 ?? '-' }}</td>
+                                    <td>{{ $item->nama_anak_2 != '' ? ($item->tertanggung_anak_2 ? 'Ya' : 'Tidak') : '-' }}</td>
                                     <!-- Anak 3 -->
-                                    <td>{{ $item->nama_anak_3 ?? '-' }}</td>
+                                    <td style="background-color:cornflowerblue">{{ $item->nama_anak_3 ?? '-' }}</td>
                                     <td>{{ $item->tempat_lahir_anak_3 ?? '-' }}</td>
                                     <td>{{ $item->tanggal_lahir_anak_3 ? \Carbon\Carbon::parse($item->tanggal_lahir_anak_3)->format('d-m-Y') : '-' }}</td>
                                     <td>{{ $item->nik_anak_3 ?? '-' }}</td>
-                                    <td>{{ $item->pekerjaan_anak_3 ?? '-' }}</td>
+                                    <td>{{ $item->nama_anak_3 != '' ? $item->pekerjaan_anak_3 : '-' }}</td>
                                     <td>{{ $item->nama_ayah_anak_3 ?? '-' }}</td>
                                     <td>{{ $item->nama_ibu_anak_3 ?? '-' }}</td>
-                                    <td>{{ $item->tertanggung_anak_3 ?? '-' }}</td>
+                                    <td>{{ $item->nama_anak_3 != '' ? ($item->tertanggung_anak_3 ? 'Ya' : 'Tidak') : '-' }}</td>
                                     <!-- Anak 4 -->
-                                    <td>{{ $item->nama_anak_4 ?? '-' }}</td>
+                                    <td style="background-color:cornflowerblue">{{ $item->nama_anak_4 ?? '-' }}</td>
                                     <td>{{ $item->tempat_lahir_anak_4 ?? '-' }}</td>
                                     <td>{{ $item->tanggal_lahir_anak_4 ? \Carbon\Carbon::parse($item->tanggal_lahir_anak_4)->format('d-m-Y') : '-' }}</td>
                                     <td>{{ $item->nik_anak_4 ?? '-' }}</td>
-                                    <td>{{ $item->pekerjaan_anak_4 ?? '-' }}</td>
+                                    <td>{{ $item->nama_anak_4 != '' ? $item->pekerjaan_anak_4 : '-' }}</td>
                                     <td>{{ $item->nama_ayah_anak_4 ?? '-' }}</td>
                                     <td>{{ $item->nama_ibu_anak_4 ?? '-' }}</td>
-                                    <td>{{ $item->tertanggung_anak_4 ?? '-' }}</td>
+                                    <td>{{ $item->nama_anak_4 != '' ? ($item->tertanggung_anak_4 ? 'Ya' : 'Tidak') : '-' }}</td>
                                 </tr>
                             @endforeach
                         </tbody>
