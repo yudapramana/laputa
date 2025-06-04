@@ -74,23 +74,34 @@
                 @endif
 
                 @if (!isset($peserta))
-                    <div class="well">
+
+                    @php
+                        // Set zona waktu jika perlu
+                        $now = \Carbon\Carbon::now('Asia/Jakarta');
+                        $cutoff = $now->copy()->setTime(21, 0); // hari ini jam 21:00
+                        $hideCariData = $now->greaterThanOrEqualTo($cutoff);
+                    @endphp
+
+                    <div class="well" style="{{ $hideCariData ? 'display:none;' : '' }}">
 
                         <h3 class="nopadding nomargin" style="margin-top: 0 !important; margin-bottom:10px !important;">Cari
                             Data</h3>
 
                         <div class="form-group">
-                            <label for="nip" style="display:none">Masukkan Nomor Induk Pegawai (NIP) Anda</label>
-                            <input style="display:none" class="form-control" type="text" id="nip" name="nip" placeholder="NIP PPPK" required value="{{ $errors->first('data') }}">
+                            <label for="nip">Masukkan Nomor Induk Pegawai (NIP) Anda</label>
+                            <input class="form-control" type="text" id="nip" name="nip" placeholder="NIP PPPK" required value="{{ $errors->first('data') }}">
                             @if ($errors->has('nip'))
                                 <span class="text-danger">{{ $errors->first('nip') }}</span>
                             @endif
                         </div>
 
-                        <a class="btn btn-primary" href="#" id="cariDataLink" style="display:none">
+                        <a class="btn btn-primary" href="#" id="cariDataLink">
                             <span id="btnText">Cari Data PPPK Formasi 2024</span>
                             <span id="loadingSpinner" class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
                         </a>
+                    </div>
+
+                    <div class="well" style="{{ !$hideCariData ? 'display:none;' : '' }}">
                         <h3>Pengisian Data telah Ditutup. Terima Kasih telah melakukan Pengisian.</h3>
                     </div>
 
