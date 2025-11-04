@@ -15,6 +15,6 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
         // $this->call(ExamLocationSeeder::class);
-        $this->call(PegawaiPPPKSeeder::class);
+        $this->call(EmployeesSeederCsv::class);
     }
 }

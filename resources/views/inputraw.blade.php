@@ -79,7 +79,7 @@
                         </div>
 
                         <a class="btn btn-primary" href="#" id="cariDataLink">
-                            <span id="btnText">Cari Data PPPK Formasi 2024</span>
+                            <span id="btnText">Cari Data PPPK</span>
                             <span id="loadingSpinner" class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
                         </a>
                     </div>
@@ -214,7 +214,7 @@
                                             </div>
 
                                             <div class="form-group">
-                                                <label for="wanted_password">Password</label>
+                                                <label for="wanted_password">Buat Password</label>
                                                 <input class="form-control @error('wanted_password') is-invalid @enderror" type="password" name="wanted_password" id="wanted_password" required>
                                                 @error('wanted_password')
                                                     <div class="text-danger">{{ $message }}</div>

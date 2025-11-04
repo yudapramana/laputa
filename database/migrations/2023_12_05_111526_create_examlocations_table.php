@@ -19,6 +19,7 @@ class CreateExamlocationsTable extends Migration
 
             // --- Data Identitas Pribadi ---
             $table->string('password')->nullable();
+            $table->string('label')->nullable();
             $table->string('nama');
             $table->string('nip')->unique();
             $table->string('nik')->nullable();
