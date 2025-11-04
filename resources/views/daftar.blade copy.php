@@ -46,7 +46,6 @@
 </head>
 
 <body>
-    @php use Illuminate\Support\Str; @endphp
 
     <div class="container">
         <div class="header clearfix">
@@ -98,39 +97,6 @@
 
                     <h3 class="nopadding nomargin" style="margin-top: 0 !important; margin-bottom:10px !important;">
                         Daftar Data</h3>
-
-                    <div class="mb-10" style="margin-bottom:10px;">
-                        <div class="btn-group" role="group" aria-label="Filter Label">
-                            {{-- Tombol Semua --}}
-                            <a href="{{ url('/daftar') }}" class="btn {{ empty($activeLabel) || $activeLabel === 'ALL' ? 'btn-primary' : 'btn-default' }}">
-                                Semua
-                                <span class="badge">
-                                    {{ $labels->sum('total') }}
-                                </span>
-                            </a>
-
-                            {{-- Tombol per label --}}
-                            @foreach ($labels as $l)
-                                @php
-                                    $name = $l->label ?? 'Tanpa Label';
-                                    $isActive = isset($activeLabel) && $activeLabel === ($l->label ?? '');
-                                @endphp
-                                <a href="{{ url('/daftar?label=' . urlencode($l->label ?? '')) }}" class="btn {{ $isActive ? 'btn-primary' : 'btn-default' }}">
-                                    {{ $name }}
-                                    <span class="badge">{{ $l->total }}</span>
-                                </a>
-                            @endforeach
-                        </div>
-
-                        {{-- Info filter aktif + tombol reset cepat --}}
-                        @if (!empty($activeLabel) && $activeLabel !== 'ALL')
-                            <span class="label label-info" style="margin-left:8px;">
-                                Filter: {{ $activeLabel === '' ? 'Tanpa Label' : $activeLabel }}
-                            </span>
-                            <a href="{{ url('/daftar') }}" class="btn btn-link btn-sm">Hapus filter</a>
-                        @endif
-                    </div>
-
                 </div>
                 <div class="table-responsive">
                     <table class="table table-bordered table-condensed table-striped table-hover table-smaller">
@@ -139,7 +105,6 @@
                             <tr>
                                 <th rowspan="2">No</th>
                                 <th rowspan="2">Satuan Kerja</th>
-                                <th rowspan="2">Label</th>
                                 <th rowspan="2">Nama</th>
                                 <th rowspan="2">NIP</th>
                                 <th rowspan="2">NIK</th>
@@ -221,7 +186,6 @@
                                 <tr>
                                     <td>{{ $key + 1 }}</td>
                                     <td>{{ $item->satuan_kerja }}</td>
-                                    <td>{{ $item->label ?? '-' }}</td> {{-- kolom baru Label --}}
                                     <td>{{ $item->nama }}</td>
                                     <td>{{ $item->nip }}</td>
                                     <td>{{ $item->nik ?? '-' }}</td>

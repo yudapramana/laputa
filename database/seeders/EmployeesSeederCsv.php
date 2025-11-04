@@ -59,6 +59,16 @@ class EmployeesSeederCsv extends Seeder
 
                 $nip = preg_replace('/\D/', '', $nip);
 
+                $jenisKelamin = null;
+                if (!empty($nip) && strlen($nip) >= 15) {
+                    $digit15 = substr($nip, 14, 1); // index ke-14 karena string dimulai dari 0
+                    if ($digit15 === '1') {
+                        $jenisKelamin = 'Laki-laki';
+                    } elseif ($digit15 === '2') {
+                        $jenisKelamin = 'Perempuan';
+                    }
+                }
+
                 $existing = Employee::where('nip', $nip)->first();
 
                 if ($existing) {
@@ -67,6 +77,7 @@ class EmployeesSeederCsv extends Seeder
                         'nama'         => $nama ?? $existing->nama,
                         'jabatan'      => $jabatan ?? $existing->jabatan,
                         'satuan_kerja' => $satuanKerja ?? $existing->satuan_kerja,
+                        'jenis_kelamin' => $jenisKelamin ?? $existing->jenis_kelamin,
                     ];
 
                     // Tambahkan label hanya jika kolomnya ada & value tidak null/kosong

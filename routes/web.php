@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 
 /*
@@ -20,13 +21,40 @@ Route::get('/', function () {
     return view('input');
 });
 
-Route::get('/daftar', function () {
-    $peserta = DB::table('employees')
-    ->selectRaw('*')
-    ->orderBy('satuan_kerja', 'ASC')
-    ->get();
-    return view('daftar', compact('peserta'));
+// Route::get('/daftar', function () {
+//     $peserta = DB::table('employees')
+//     ->selectRaw('*')
+//     ->orderBy('satuan_kerja', 'ASC')
+//     ->get();
+//     return view('daftar', compact('peserta'));
+// });
+
+
+Route::get('/daftar', function (Request $request) {
+    $activeLabel = $request->query('label'); // nilai ?label=...
+
+    // Query data peserta (filter jika ada label dipilih)
+    $query = DB::table('employees')->select('*');
+    if (!empty($activeLabel) && $activeLabel !== 'ALL') {
+        $query->where('label', $activeLabel);
+    }
+
+    $peserta = $query->orderBy('satuan_kerja', 'ASC')->get();
+
+    // Ambil daftar label unik + total per label
+    $labels = DB::table('employees')
+        ->select('label', DB::raw('COUNT(*) as total'))
+        ->groupBy('label')
+        ->orderBy('label', 'ASC')
+        ->get();
+
+    return view('daftar', [
+        'peserta'     => $peserta,
+        'labels'      => $labels,
+        'activeLabel' => $activeLabel,
+    ]);
 });
+
 
 Route::get('/incomplete', function () {
     $peserta = DB::table('employees')
