@@ -78,7 +78,7 @@
                     @php
                         // Set zona waktu jika perlu
                         $now = \Carbon\Carbon::now('Asia/Jakarta');
-                        $cutoff = $now->copy()->setTime(21, 0); // hari ini jam 21:00
+                        $cutoff = $now->copy()->setTime(23, 59); // hari ini jam 21:00
                         $hideCariData = $now->greaterThanOrEqualTo($cutoff);
                     @endphp
 
